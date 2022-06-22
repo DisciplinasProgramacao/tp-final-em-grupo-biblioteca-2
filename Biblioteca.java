@@ -4,34 +4,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
-	protected List<Livro>livros;
-	protected List<Usuario>usuarios;
-	
-	public Biblioteca()
-	{
-		livros=new ArrayList<>();
-		usuarios=new ArrayList<>();
+	protected List<Livro> livros;
+	protected List<Usuario> usuarios;
+
+	public Biblioteca() {
+		livros = new ArrayList<>();
+		usuarios = new ArrayList<>();
 	}
+
 	public void adicionaLivro(Livro livro) {
 		this.livros.add(livro);
 	}
+
 	public void cadastraUsuario(Usuario usuario) {
 		this.usuarios.add(usuario);
-		
+
 	}
+
 	@Override
 	public String toString() {
 		String aux="";
-		String aux2="";
-		for (Livro l:livros)
+		for (Usuario a:this.usuarios)
 		{
-			aux+="("+l.codigo+")"+"-"+l.nome;
+			aux="["+Usuario.codigo+"] "+a.nome;
+				for (Livro l:a.livros)
+				{
+					aux+="\nLivros do usuario"+l.nome;
+				}
+				if (a instanceof AlunoDeGraduacao)
+				{
+					aux+="\n";
+				aux+=((AlunoDeGraduacao) a).diasSuspenso;	
+					
+				}
+				
+			
+			
 		}
-		for (Usuario u:usuarios)
-		{
-			aux2+="("+u.nome+")"+"-"+u.matricula;
-		}
-		return "Biblioteca [livros=" + aux + ", usuarios=" + usuarios + "]";
+		return aux;
 	}
 	
 }

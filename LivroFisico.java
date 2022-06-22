@@ -1,12 +1,11 @@
 package Business;
 
-public class LivroFisico extends Livro{
-public boolean status;
+public class LivroFisico extends Livro {
+	
+
 	public LivroFisico(String nome) {
 		super(nome);
-		status=false;
-		
-	}
 	
+	}
 
 }

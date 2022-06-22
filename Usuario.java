@@ -6,28 +6,26 @@ import java.util.List;
 public abstract class Usuario {
 
 	protected String nome;
-	protected String matricula;
-	protected boolean livro;
-	protected List <String>listaDeLivroDoUsuario;
-	public Usuario(String nome, String matricula) {
-	
+	protected List<Livro> livros;
+	protected List<Data> datas;
+	protected static int codigo;
+	protected int matricula;
+	public Usuario(String nome) {
+
 		this.nome = nome;
-		this.matricula = matricula;
-		this.livro=false;
-		listaDeLivroDoUsuario=new ArrayList<>();
-	}
-	public abstract boolean atrasado(Data dataAtual,Data devolucao);
-	@Override
-	public String toString() {
-		String aux="";
-		for (String a:listaDeLivroDoUsuario)
-		{
-			aux+=a;
-		}
-		
-		return "Usuario [nome=" + nome + ", matricula=" + matricula + ", listaDeLivroDoUsuario=" + aux
-				+ "]";
+		this.matricula=++codigo;
+		this.livros = new ArrayList<>();
+		this.datas = new ArrayList<>();
 	}
 	
-	
+	public String getNome() {
+		return nome;
+	}
+
+	public abstract boolean atrasado(Data dataAtual, Data devolucao);
+
+	public List<Data> getDatas() {
+		return datas;
+	}
+
 }
